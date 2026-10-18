@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,216 +7,296 @@
 /* Custom styles */
 @layer base {
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+    @apply font-sans antialiased;
     background: linear-gradient(135deg, #f0fdf4 0%, #e0f7fa 50%, #e0f2f1 100%);
     color: #1f2937;
   }
 }
 
+/* Arabic font utility */
 .font-arabic {
   font-family: 'Amiri', serif;
+  line-height: 1.8;
+  direction: rtl;
+  text-align: right;
+  letter-spacing: 0.02em;
 }
 
 @layer components {
+  /* Header with glass effect */
   .header {
     @apply bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-emerald-100;
   }
+  
   .header-content {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  
   .logo {
     @apply flex items-center gap-3;
   }
+  
   .logo-icon {
     @apply w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform;
   }
+  
   .logo-icon span {
     @apply text-white font-bold text-lg;
   }
+  
   .logo-text h1 {
     @apply text-xl font-bold text-emerald-800;
   }
+  
   .logo-text p {
     @apply text-xs text-emerald-600 -mt-1;
   }
+  
+  /* Main content area */
   .main {
     @apply flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full;
   }
+  
+  /* Hero section with animated icon */
   .hero {
     @apply text-center mb-10;
   }
+  
   .hero-icon {
     @apply inline-block mb-4 w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-300;
   }
+  
   .hero-icon span {
     @apply text-white font-arabic text-4xl -rotate-12;
   }
+  
   .section-title {
-    @apply mb-2;
+    @apply text-2xl font-bold bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent mb-2;
   }
+  
+  /* Search bar with smooth focus */
   .search-container {
     @apply max-w-md mx-auto mb-8 relative;
   }
+  
   .search-input {
-    @apply w-full pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-sm;
+    @apply w-full pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-sm transition-all duration-200;
   }
+  
   .search-clear {
-    @apply absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600;
+    @apply absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors;
   }
+  
   .search-count {
     @apply text-center text-sm text-gray-500 mt-2;
   }
+  
+  /* Responsive grid for surah cards */
   .surah-grid {
     @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   }
+  
+  /* Enhanced surah card with hover effects */
   .surah-card {
-    @apply bg-white/95 rounded-xl border border-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform duration-200 flex flex-col hover:bg-white/100;
+    @apply bg-white/95 rounded-xl border border-gray-50 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col hover:bg-white/100;
   }
+  
   .surah-card-header {
     @apply flex items-start gap-4 p-4;
   }
+  
   .surah-number {
-    @apply w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0;
+    @apply w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0;
   }
-  .surah-info {
-    @apply flex-1 min-w-0;
-  }
+  
   .surah-info h3 {
-    @apply font-bold text-gray-900 text-lg;
+    @apply font-bold text-gray-900 text-lg mb-1;
   }
+  
   .surah-info p {
     @apply text-sm text-emerald-600 font-medium;
   }
+  
   .surah-info small {
     @apply text-xs text-gray-400 mt-1;
   }
+  
   .surah-card-footer {
-    @apply mt-3 pt-3 border-t border-gray-100 flex justify-between items-center;
+    @apply mt-auto pt-3 pb-2 px-4 border-t border-gray-100 flex justify-between items-center;
   }
+  
+  /* Arabic text styling with proper direction and readability */
   .arabic-text {
-    @apply text-2xl text-emerald-700 font-arabic;
+    @apply text-xl sm:text-2xl text-emerald-800 font-arabic font-semibold mb-2 block text-right;
   }
+  
   .surah-arrow {
     @apply text-gray-400;
   }
+  
+  /* Footer with gradient */
   .footer {
-    @apply bg-white/60 backdrop-blur-sm border-t border-emerald-100 mt-auto;
+    @apply bg-gradient-to-r from-emerald-50 to-teal-50 border-t border-emerald-100 mt-auto;
   }
+  
   .footer-content {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center;
   }
+  
   .footer-text {
     @apply text-sm text-gray-600;
   }
+  
   .footer-link {
-    @apply text-emerald-600 font-medium;
+    @apply text-emerald-600 font-medium hover:text-emerald-700 transition-colors;
   }
+  
   .footer-copyright {
     @apply text-xs text-gray-400 mt-1;
   }
+  
+  /* Back button with icon */
   .back-btn {
-    @apply inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium mb-4;
+    @apply inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium mb-4 transition-colors;
   }
+  
   .back-btn svg {
     @apply w-5 h-5;
   }
+  
+  /* Bismillah section with elegant styling */
   .bismillah {
-    @apply bg-gradient-to-r from-emerald-50 to-teal-50 py-6;
+    @apply bg-gradient-to-r from-emerald-50 to-teal-50 py-6 px-4 rounded-lg mb-6;
   }
+  
   .bismillah-content {
-    @apply max-w-4xl mx-auto px-4 text-center;
+    @apply max-w-4xl mx-auto text-center;
   }
+  
   .bismillah-arabic {
-    @apply font-arabic text-3xl text-emerald-800;
+    @apply font-arabic text-3xl sm:text-4xl text-emerald-800 font-bold mb-2;
   }
+  
   .bismillah-translation {
-    @apply text-sm text-gray-500 mt-2;
+    @apply text-sm text-gray-500 mt-2 italic;
   }
+  
+  /* Surah detail page styling */
   .surah-detail-header {
-    @apply bg-white/70 backdrop-blur-sm;
+    @apply bg-white/70 backdrop-blur-sm shadow-sm;
   }
+  
   .surah-detail-content {
     @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4;
   }
+  
   .surah-detail-title {
-    @apply flex items-center gap-4;
+    @apply flex items-center gap-4 mb-6;
   }
+  
   .surah-detail-number {
     @apply w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-xl;
   }
+  
   .surah-detail-info {
     @apply flex flex-col;
   }
+  
   .surah-detail-title-text {
     @apply text-3xl font-bold text-emerald-800;
   }
+  
   .surah-detail-title-subtext {
-    @apply text-emerald-600 font-medium;
+    @apply text-emerald-600 font-medium mt-1;
   }
+  
   .surah-detail-stats {
     @apply flex gap-2 mt-2;
   }
+  
   .surah-detail-stat {
     @apply text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full;
   }
+  
   .surah-detail-stat-teal {
     @apply text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full;
   }
+  
   .surah-detail-arabic {
-    @apply ml-auto hidden sm:block text-4xl text-emerald-700 font-arabic;
+    @apply ml-auto hidden sm:block text-4xl text-emerald-700 font-arabic font-semibold;
   }
+  
+  /* Ayah list and cards */
   .ayah-list {
     @apply flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-4;
   }
+  
   .ayah-card {
-    @apply bg-white/95 rounded-xl border border-gray-50 shadow-sm hover:shadow-md;
+    @apply bg-white/95 rounded-xl border border-gray-50 shadow-sm hover:shadow-md transition-shadow duration-200 p-5;
   }
+  
   .ayah-card-header {
-    @apply flex items-start gap-4 p-4;
+    @apply flex items-start gap-4 mb-3;
   }
+  
   .ayah-number {
     @apply w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0;
   }
+  
   .ayah-content {
     @apply flex-1;
   }
+  
   .ayah-arabic {
-    @apply text-2xl font-arabic mb-2 text-right leading-relaxed;
+    @apply text-xl sm:text-2xl font-arabic mb-3 block text-right leading-relaxed font-semibold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
   }
+  
   .ayah-divider {
-    @apply border-t border-emerald-100 pt-2;
+    @apply border-t border-emerald-100 pt-3;
   }
+  
   .ayah-translation {
-    @apply text-gray-600 text-sm leading-relaxed;
+    @apply text-gray-600 text-sm sm:text-base leading-relaxed mt-3 pl-4 border-l-2 border-emerald-200;
   }
+  
+  /* Loading skeleton with better animations */
   .skeleton {
     @apply animate-pulse;
   }
+  
   .skeleton-card {
     @apply bg-white/60 rounded-2xl p-5 border border-white/50;
   }
+  
   .skeleton-bar {
-    @apply h-4 bg-gray-100 rounded w-1/2 mb-2;
+    @apply h-4 bg-gray-200 rounded w-1/2 mb-2;
   }
+  
   .skeleton-bar-wide {
-    @apply h-6 bg-gray-200 rounded w-3/4;
+    @apply h-6 bg-gray-300 rounded w-3/4;
   }
+  
+  /* Error state styling */
   .error-state {
     @apply text-center py-12;
   }
+  
   .error-icon {
     @apply text-6xl mb-4 text-red-600;
   }
+  
   .error-message {
     @apply text-red-600 text-lg;
   }
+  
   .retry-btn {
-    @apply mt-4 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700;
+    @apply mt-4 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium;
   }
+  
+  /* Stat badge with improved styling */
   .stat-badge {
-    @apply bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium;
+    @apply bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium shadow-sm;
   }
 }

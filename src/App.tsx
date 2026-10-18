@@ -1,33 +1,32 @@
 import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
-import { quranService } from './services/quranService';
-import type { Surah, Ayah } from './services/quranService';
+import { quranService, type Surah, type Ayah } from './services/quranService';
 import { useEffect, useState, useMemo } from 'react';
 
 // Loading skeleton component
 const SkeletonCard: React.FC = () => (
-  <div className="bg-white/60 rounded-2xl p-5 border border-white/50 animate-pulse">
-    <div className="flex items-center justify-between">
+  <div className="bg-gradient-to-b from-gray-100 to-gray-50 rounded-2xl p-5 border border-gray-200 overflow-hidden">
+    <div className="flex items-center gap-4">
+      <div className="w-12 h-12 bg-gradient-to-br from-gray-300 to-gray-200 rounded-full animate-pulse flex-shrink-0"></div>
       <div className="flex-1">
-        <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
-        <div className="h-4 bg-gray-100 rounded w-1/2"></div>
+        <div className="h-5 bg-gray-200 rounded w-3/4 mb-2 animate-pulse"></div>
+        <div className="h-4 bg-gray-100 rounded w-1/2 animate-pulse"></div>
       </div>
-      <div className="w-10 h-10 bg-gray-200 rounded-full"></div>
     </div>
   </div>
 );
 
-// Header component
+// Professional header with glassmorphism effect
 const Header: React.FC<{ pageTitle?: string }> = ({ pageTitle }) => (
   <header className="bg-white/80 backdrop-blur-md border-b border-emerald-100 sticky top-0 z-50 shadow-sm">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center h-16">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <span className="text-white font-bold text-lg">Q</span>
+          <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-200">
+            <span className="text-white font-bold text-xl">🕌</span>
           </div>
           <div>
             <h1 className="text-xl font-bold text-emerald-800">Al-Quran</h1>
-            <p className="text-xs text-emerald-600 -mt-1">Kitab Suci Islam</p>
+            <p className="text-xs text-emerald-600 -mt-1">Digital App</p>
           </div>
         </Link>
         {pageTitle && (
@@ -41,15 +40,17 @@ const Header: React.FC<{ pageTitle?: string }> = ({ pageTitle }) => (
   </header>
 );
 
-// Footer component
+// Professional footer
 const Footer: React.FC = () => (
-  <footer className="bg-white/60 backdrop-blur-sm border-t border-emerald-100 mt-auto">
+  <footer className="bg-gradient-to-r from-emerald-50 to-teal-50 border-t border-emerald-100 mt-auto">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <div className="text-center">
         <p className="text-sm text-gray-600">
           Al-Quran Digital • Data dari <span className="text-emerald-600 font-medium">alquran.cloud</span>
         </p>
-        <p className="text-xs text-gray-400 mt-1">&copy; {new Date().getFullYear()} Dibuat dengan ❤️ untuk Umat Islam</p>
+        <p className="text-xs text-gray-400 mt-1">
+          &copy; {new Date().getFullYear()} Dibuat dengan ❤️ untuk Umat Islam
+        </p>
       </div>
     </div>
   </footer>
@@ -78,7 +79,6 @@ const Home: React.FC = () => {
     fetchSurahs();
   }, []);
 
-  // Filter surahs based on search
   const filteredSurahs = useMemo(() => {
     if (!searchTerm) return surahs;
     const term = searchTerm.toLowerCase();
@@ -111,7 +111,7 @@ const Home: React.FC = () => {
       <div className="text-center">
         <div className="text-6xl mb-4">⚠️</div>
         <p className="text-red-600 text-lg">{error}</p>
-        <button onClick={() => window.location.reload()} className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700">
+        <button onClick={() => window.location.reload()} className="mt-4 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium">
           Coba Lagi
         </button>
       </div>
@@ -126,13 +126,15 @@ const Home: React.FC = () => {
         <div className="text-center mb-10">
           <div className="inline-block mb-4">
             <div className="w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-300">
-              <span className="text-white font-arabic text-4xl -rotate-12">📖</span>
+              <span className="text-white font-arabic text-4xl -rotate-12">🕌</span>
             </div>
           </div>
-          <h2 className="section-title mb-2">Bismillahhirrahmanirrahim</h2>
+          <h2 className="bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent text-3xl font-bold mb-2">
+            Bismillahirrahmanirrahim
+          </h2>
           <p className="text-gray-600 text-lg mb-2">Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang</p>
           <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-            <span className="stat-badge">{surahs.length} Surah</span>
+            <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full font-medium">{surahs.length} Surah</span>
             <span>•</span>
             <span>6.236 Ayat</span>
           </div>
@@ -149,12 +151,12 @@ const Home: React.FC = () => {
               placeholder="Cari surah..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-sm"
+              className="w-full pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-sm transition-all duration-200"
             />
             {searchTerm && (
               <button
                 onClick={() => setSearchTerm('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -172,28 +174,28 @@ const Home: React.FC = () => {
         {/* Surah Grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filteredSurahs.map((surah) => (
-            <Link
-              key={surah.number}
-              to={`/surah/${surah.number}`}
-              className="surah-card"
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <span className="text-white font-bold">{surah.number}</span>
+            <Link key={surah.number} to={`/surah/${surah.number}`} className="group">
+              <div className="surah-card">
+                <div className="p-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0 group-hover:scale-110 transition-transform duration-200">
+                      <span className="text-white font-bold text-lg">{surah.number}</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold text-gray-900 text-lg truncate">{surah.englishName}</h3>
+                      <p className="text-sm text-emerald-600 font-medium">{surah.englishNameTranslation}</p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        {surah.numberOfAyahs} ayat • {surah.revelationType === 'Meccan' ? 'Makkiyah' : 'Madaniyah'}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-gray-900 text-lg truncate">{surah.englishName}</h3>
-                  <p className="text-sm text-emerald-600 font-medium">{surah.englishNameTranslation}</p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    {surah.numberOfAyahs} ayat • {surah.revelationType === 'Meccan' ? 'Makkiyah' : 'Madaniyah'}
-                  </p>
+                <div className="mt-auto pt-3 pb-3 px-4 border-t border-gray-100 flex justify-between items-center">
+                  <span className="font-arabic text-emerald-700 text-xl">{surah.name}</span>
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-emerald-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </div>
-              </div>
-              <div className="mt-3 pt-3 border-t border-gray-100 flex justify-between items-center">
-                <span className="font-arabic text-emerald-700 text-xl">{surah.name}</span>
-                <svg className="w-5 h-5 text-gray-400 group-hover:text-emerald-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
               </div>
             </Link>
           ))}
@@ -266,6 +268,7 @@ const SurahDetail: React.FC = () => {
           </div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 
@@ -297,8 +300,8 @@ const SurahDetail: React.FC = () => {
     <div className="min-h-screen flex flex-col">
       <Header pageTitle={surahInfo.englishName} />
       
-      {/* Back Button & Title */}
-      <div className="bg-white/60 backdrop-blur-sm border-b border-emerald-100">
+      {/* Surah Detail Header */}
+      <div className="bg-white/70 backdrop-blur-sm border-b border-emerald-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium mb-4 group">
             <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,7 +309,7 @@ const SurahDetail: React.FC = () => {
             </svg>
             Kembali ke Daftar Surah
           </Link>
-          
+
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-xl">
               <span className="text-white font-bold text-2xl">{surahInfo.number}</span>
@@ -331,10 +334,14 @@ const SurahDetail: React.FC = () => {
       </div>
 
       {/* Bismillah */}
-      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 py-4">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="font-arabic text-3xl text-emerald-800">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
-          <p className="text-sm text-gray-500 mt-1">Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang</p>
+      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 py-6 px-4 rounded-lg mb-6 mx-4 sm:mx-6 lg:mx-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="font-arabic text-3xl sm:text-4xl text-emerald-800 font-bold mb-2">
+            بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱالرَّحِيمِ
+          </p>
+          <p className="text-sm text-gray-500 mt-2 italic">
+            Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang
+          </p>
         </div>
       </div>
 
@@ -343,15 +350,16 @@ const SurahDetail: React.FC = () => {
         <div className="space-y-4">
           {ayahs.map((ayah) => (
             <div key={ayah.number} className="ayah-card">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+              <div className="flex items-start gap-4 p-5">
+                <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
                   <span className="text-white font-bold text-sm">{ayah.numberInSurah}</span>
                 </div>
-                <div className="flex-1">
-                  <p className="arabic-text mb-4">{ayah.text}</p>
+                <div className="flex-1 space-y-3">
+                  <p className="arabic-text mb-3">{ayah.text}</p>
                   <div className="border-t border-emerald-100 pt-3">
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {ayah.text}
+                    <p className="ayah-translation">
+                      <span className="font-medium text-emerald-700 mr-1">{ayah.numberInSurah}.</span>
+                      {ayah.translation || ayah.text}
                     </p>
                   </div>
                 </div>

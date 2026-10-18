@@ -21,6 +21,7 @@ export interface Ayah {
   ruku: number;
   hizbQuarter: number;
   sajda: boolean;
+  translation?: string;
 }
 
 export interface QuranApiResponse<T> {
@@ -36,7 +37,23 @@ export const quranService = {
   },
 
   getSurahDetail: async (surahNumber: number): Promise<Surah & { ayahs: Ayah[] }> => {
-    const response = await axios.get(`${API_BASE}/surah/${surahNumber}?edition=id`);
-    return response.data.data;
+    // Fetch Arabic text
+    const arabicResponse = await axios.get(`${API_BASE}/surah/${surahNumber}`);
+    // Fetch Indonesian translation
+    const idResponse = await axios.get(`${API_BASE}/surah/${surahNumber}/id.indonesian`);
+    
+    const arabicData = arabicResponse.data.data;
+    const idData = idResponse.data.data;
+    
+    // Combine Arabic text with Indonesian translation
+    const ayahs = arabicData.ayahs.map((ayah: Ayah, index: number) => ({
+      ...ayah,
+      translation: idData.ayahs[index]?.text || ayah.text
+    }));
+    
+    return {
+      ...arabicData,
+      ayahs
+    };
   },
 };

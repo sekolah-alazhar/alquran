@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0fdf4;
+}
+
+.font-arabic {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+  text-align: right;
+}
