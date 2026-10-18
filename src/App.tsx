@@ -125,14 +125,14 @@ const Home: React.FC = () => {
         {/* Hero Section */}
         <div className="text-center mb-10">
           <div className="inline-block mb-4">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-300">
-              <span className="text-white font-arabic text-4xl -rotate-12">🕌</span>
+            <div className="w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl">
+              <span className="text-white font-bold text-4xl">🕌</span>
             </div>
           </div>
-          <h2 className="bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent text-3xl font-bold mb-2">
-            Bismillahirrahmanirrahim
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent mb-2">
+            Al-Quran
           </h2>
-          <p className="text-gray-600 text-lg mb-2">Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang</p>
+          <p className="text-gray-600 text-lg mb-2">Baca Ayat dengan Terjemahan Indonesia</p>
           <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
             <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full font-medium">{surahs.length} Surah</span>
             <span>•</span>
@@ -330,18 +330,6 @@ const SurahDetail: React.FC = () => {
               <span className="font-arabic text-4xl text-emerald-700">{surahInfo.name}</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Bismillah */}
-      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 py-6 px-4 rounded-lg mb-6 mx-4 sm:mx-6 lg:mx-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="font-arabic text-3xl sm:text-4xl text-emerald-800 font-bold mb-2">
-            بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱالرَّحِيمِ
-          </p>
-          <p className="text-sm text-gray-500 mt-2 italic">
-            Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang
-          </p>
         </div>
       </div>
 
