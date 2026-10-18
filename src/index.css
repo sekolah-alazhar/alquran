@@ -1,111 +1,220 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
+/* Custom styles */
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0fdf4 0%, #e0f7fa 50%, #e0f2f1 100%);
+    color: #1f2937;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+.font-arabic {
+  font-family: 'Amiri', serif;
+}
+
+@layer components {
+  .header {
+    @apply bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-emerald-100;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  .header-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  .logo {
+    @apply flex items-center gap-3;
   }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+  .logo-icon {
+    @apply w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform;
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .logo-icon span {
+    @apply text-white font-bold text-lg;
+  }
+  .logo-text h1 {
+    @apply text-xl font-bold text-emerald-800;
+  }
+  .logo-text p {
+    @apply text-xs text-emerald-600 -mt-1;
+  }
+  .main {
+    @apply flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full;
+  }
+  .hero {
+    @apply text-center mb-10;
+  }
+  .hero-icon {
+    @apply inline-block mb-4 w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl transform rotate-12 hover:rotate-0 transition-transform duration-300;
+  }
+  .hero-icon span {
+    @apply text-white font-arabic text-4xl -rotate-12;
+  }
+  .section-title {
+    @apply mb-2;
+  }
+  .search-container {
+    @apply max-w-md mx-auto mb-8 relative;
+  }
+  .search-input {
+    @apply w-full pl-12 pr-4 py-3 bg-white/80 backdrop-blur-sm border border-emerald-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-sm;
+  }
+  .search-clear {
+    @apply absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600;
+  }
+  .search-count {
+    @apply text-center text-sm text-gray-500 mt-2;
+  }
+  .surah-grid {
+    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  .surah-card {
+    @apply bg-white/95 rounded-xl border border-gray-50 shadow-sm hover:shadow-md hover:-translate-y-1 transition-transform duration-200 flex flex-col hover:bg-white/100;
+  }
+  .surah-card-header {
+    @apply flex items-start gap-4 p-4;
+  }
+  .surah-number {
+    @apply w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0;
+  }
+  .surah-info {
+    @apply flex-1 min-w-0;
+  }
+  .surah-info h3 {
+    @apply font-bold text-gray-900 text-lg;
+  }
+  .surah-info p {
+    @apply text-sm text-emerald-600 font-medium;
+  }
+  .surah-info small {
+    @apply text-xs text-gray-400 mt-1;
+  }
+  .surah-card-footer {
+    @apply mt-3 pt-3 border-t border-gray-100 flex justify-between items-center;
+  }
+  .arabic-text {
+    @apply text-2xl text-emerald-700 font-arabic;
+  }
+  .surah-arrow {
+    @apply text-gray-400;
+  }
+  .footer {
+    @apply bg-white/60 backdrop-blur-sm border-t border-emerald-100 mt-auto;
+  }
+  .footer-content {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center;
+  }
+  .footer-text {
+    @apply text-sm text-gray-600;
+  }
+  .footer-link {
+    @apply text-emerald-600 font-medium;
+  }
+  .footer-copyright {
+    @apply text-xs text-gray-400 mt-1;
+  }
+  .back-btn {
+    @apply inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-medium mb-4;
+  }
+  .back-btn svg {
+    @apply w-5 h-5;
+  }
+  .bismillah {
+    @apply bg-gradient-to-r from-emerald-50 to-teal-50 py-6;
+  }
+  .bismillah-content {
+    @apply max-w-4xl mx-auto px-4 text-center;
+  }
+  .bismillah-arabic {
+    @apply font-arabic text-3xl text-emerald-800;
+  }
+  .bismillah-translation {
+    @apply text-sm text-gray-500 mt-2;
+  }
+  .surah-detail-header {
+    @apply bg-white/70 backdrop-blur-sm;
+  }
+  .surah-detail-content {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4;
+  }
+  .surah-detail-title {
+    @apply flex items-center gap-4;
+  }
+  .surah-detail-number {
+    @apply w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-xl;
+  }
+  .surah-detail-info {
+    @apply flex flex-col;
+  }
+  .surah-detail-title-text {
+    @apply text-3xl font-bold text-emerald-800;
+  }
+  .surah-detail-title-subtext {
+    @apply text-emerald-600 font-medium;
+  }
+  .surah-detail-stats {
+    @apply flex gap-2 mt-2;
+  }
+  .surah-detail-stat {
+    @apply text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full;
+  }
+  .surah-detail-stat-teal {
+    @apply text-xs bg-teal-100 text-teal-700 px-2 py-1 rounded-full;
+  }
+  .surah-detail-arabic {
+    @apply ml-auto hidden sm:block text-4xl text-emerald-700 font-arabic;
+  }
+  .ayah-list {
+    @apply flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-4;
+  }
+  .ayah-card {
+    @apply bg-white/95 rounded-xl border border-gray-50 shadow-sm hover:shadow-md;
+  }
+  .ayah-card-header {
+    @apply flex items-start gap-4 p-4;
+  }
+  .ayah-number {
+    @apply w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0;
+  }
+  .ayah-content {
+    @apply flex-1;
+  }
+  .ayah-arabic {
+    @apply text-2xl font-arabic mb-2 text-right leading-relaxed;
+  }
+  .ayah-divider {
+    @apply border-t border-emerald-100 pt-2;
+  }
+  .ayah-translation {
+    @apply text-gray-600 text-sm leading-relaxed;
+  }
+  .skeleton {
+    @apply animate-pulse;
+  }
+  .skeleton-card {
+    @apply bg-white/60 rounded-2xl p-5 border border-white/50;
+  }
+  .skeleton-bar {
+    @apply h-4 bg-gray-100 rounded w-1/2 mb-2;
+  }
+  .skeleton-bar-wide {
+    @apply h-6 bg-gray-200 rounded w-3/4;
+  }
+  .error-state {
+    @apply text-center py-12;
+  }
+  .error-icon {
+    @apply text-6xl mb-4 text-red-600;
+  }
+  .error-message {
+    @apply text-red-600 text-lg;
+  }
+  .retry-btn {
+    @apply mt-4 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700;
+  }
+  .stat-badge {
+    @apply bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-xs font-medium;
+  }
 }
