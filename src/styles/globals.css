@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background: #f7f6f2;
+    color: #1c2a24;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .dark body {
+    background: #0c1210;
+    color: #e6ede9;
+  }
+
+  ::selection {
+    background: rgba(16, 185, 129, 0.25);
+  }
+
+  :focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(120, 140, 130, 0.35);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer utilities {
+  .font-arabic {
+    font-family: 'Amiri', serif;
+    direction: rtl;
+    line-height: 2;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+  }
+  .dark .glass {
+    background: rgba(12, 18, 16, 0.82);
+  }
+
+  .surface {
+    background: #ffffff;
+    border: 1px solid rgba(16, 90, 60, 0.09);
+  }
+  .dark .surface {
+    background: #121a16;
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  /* gold accent line */
+  .gold-line {
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    height: 1px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  @keyframes float-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .float-in {
+    animation: float-in 350ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .float-in {
+      animation: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
