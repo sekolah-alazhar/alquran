@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        arabic: ['Amiri', 'serif'],
+        arabic: ['LPMQ Isep Misbah', 'Amiri', 'serif'],
       },
       colors: {
         primary: {

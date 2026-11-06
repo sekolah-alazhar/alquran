@@ -1,0 +1,9 @@
+LPMQ Isep Misbah
+----------------
+Font Arab standar Mushaf Al-Qur'an dari
+Lajnah Pentashihan Mushaf Al-Qur'an (LPMQ), Kementerian Agama RI.
+Copyright (c) 2018 Lajnah Pentashihan Mushaf Al-Qur'an <lajnah@kemenag.go.id>.
+
+Dipakai di aplikasi ini untuk menampilkan teks Al-Qur'an (kebutuhan umat,
+distribusi font asli tanpa modifikasi). Silakan merujuk ke Kemenag/LPMQ
+untuk ketentuan lisensi lengkap font.

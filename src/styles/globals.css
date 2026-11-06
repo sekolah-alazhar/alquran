@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Font Arab standar Mushaf Al-Qur'an (LPMQ Kemenag RI) — self-hosted, tanpa CDN */
+@font-face {
+  font-family: 'LPMQ Isep Misbah';
+  src: url('/fonts/LPMQ-IsepMisbah.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
@@ -50,9 +59,10 @@
 
 @layer utilities {
   .font-arabic {
-    font-family: 'Amiri', serif;
+    font-family: 'LPMQ Isep Misbah', 'Amiri', serif;
     direction: rtl;
-    line-height: 2;
+    line-height: 2.15;
+    word-spacing: 0.04em;
   }
 
   .glass {
